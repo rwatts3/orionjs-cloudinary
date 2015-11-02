@@ -6,29 +6,19 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-	api.versionsFrom('1.0');
+	api.versionsFrom('METEOR@1.2.1');
 
 	api.use([
 		'meteor-base',
 		'jquery',
-		'templating',
 		'orionjs:core@1.6.0',
 		'orionjs:filesystem@1.6.0',
 		'orionjs:config@1.6.0',
-		'nekojira:cloudinary-jquery-upload@0.1.0'
+		'lepozepo:cloudinary@4.0.3'
 	]);
 	
 	api.addFiles([
-		'lib/widget.cloudinary.js'
-	],'client');
-	
-	api.addFiles([
-		'cloudinary.js',
+		'cloudinary.js'
 	]);
 
-});
-
-Package.onTest(function(api) {
-	api.use(['rwatts:orionjs-cloudinary', 'mike:mocha-package', 'orionjs:filesystem']);
-	api.addFiles(['tests/orionjs-cloudinary-tests.js']);
 });
