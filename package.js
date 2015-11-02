@@ -9,12 +9,19 @@ Package.onUse(function(api) {
 	api.versionsFrom('1.0');
 
 	api.use([
+		'meteor-base',
+		'jquery',
+		'templating',
 		'orionjs:core@1.6.0',
 		'orionjs:filesystem@1.6.0',
 		'orionjs:config@1.6.0',
-		'lepozepo:cloudinary@4.0.3'
+		'nekojira:cloudinary-jquery-upload@0.1.0'
 	]);
-
+	
+	api.addFiles([
+		'lib/widget.cloudinary.js'
+	],'client');
+	
 	api.addFiles([
 		'cloudinary.js',
 	]);
