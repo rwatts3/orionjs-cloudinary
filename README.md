@@ -6,7 +6,32 @@ This package brings the `Cloudinary` Image Management System to Orion CMS.
 This package is an extension of **Orion** and requires the following packages in order to work. 
 `orionjs:filesystem` and `orionjs:image-attribute` or `orionjs:file-attribute`.
 
-## Instructions
+## Instructions `v1.0.0` *Warning Breaking Changes*
+1. Install the package by adding `rwatts:orionjs-cloudinary` to your project.
+2. Define your cloudinary settings your `settings.json` file. *see the code sample below*
+
+`v1.0.0 sample`
+```json
+{
+	"public": {
+		"cloudinary": {
+			"cloud_name": "my-cloud-name",
+			"folder": "my-folder"
+		}
+	},
+	"private": {
+		"cloudinary": {
+			"cloud_name": "my-cloud-name",
+			"api_key": "my-api-key",
+			"api_secret": "my-api-secret",
+			"folder": "my-folder"
+		}
+	}
+}
+
+```
+
+## Instructions `v0.1.1`
 1. Install the package by adding `rwatts:orionjs-cloudinary` to your project.
 2. Navigate to the **config** section of your admin panel.
 3. Define your **Cloudinary** configuration settings by navigating to the **Cloudinary** Tab.
