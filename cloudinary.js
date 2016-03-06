@@ -48,5 +48,3 @@ if (Meteor.isClient) {
 		cloud_name: cloud_name
 	});
 }
-
-export default Cloudinary;
