@@ -1,7 +1,7 @@
 Package.describe({
 	name: 'rwatts:orionjs-cloudinary',
 	summary: 'Cloudinary storage for orionjs:filesystem',
-	version: '1.0.0',
+	version: '1.0.1',
 	git: 'https://github.com/rwatts3/orionjs-cloudinary'
 });
 
