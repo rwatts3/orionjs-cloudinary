@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-	api.versionsFrom('METEOR@1.2.1');
+	api.versionsFrom('METEOR@1.3-beta.12');
 
 	api.use([
 		'meteor-base',
@@ -22,6 +22,6 @@ Package.onUse(function(api) {
 		'cloudinary.js'
 	]);
 	
+	api.mainModule("cloudinary.js", "client");
 	api.export(['orion', 'Cloudinary']);
-	
 });
