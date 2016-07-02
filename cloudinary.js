@@ -13,7 +13,7 @@ if (Meteor.isClient) {
 			}
 			Cloudinary.collection.remove({});
 		});
-		
+
 		Tracker.autorun(function () {
 			var file = Cloudinary.collection.findOne();
 			if (file) {
@@ -34,12 +34,15 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-	Cloudinary.config({
-		cloud_name: Meteor.settings.private.cloudinary.cloud_name,
-		api_key: Meteor.settings.private.cloudinary.api_key,
-		api_secret: Meteor.settings.private.cloudinary.api_secret
+	Meteor.startup(function() {
+		if (Meteor.settings.private && Meteor.settings.private.cloudinary) {
+			Cloudinary.config({
+				cloud_name: Meteor.settings.private.cloudinary.cloud_name,
+				api_key: Meteor.settings.private.cloudinary.api_key,
+				api_secret: Meteor.settings.private.cloudinary.api_secret
+			});
+		}
 	});
-
 }
 if (Meteor.isClient) {
 	let cloud_name = Meteor.settings.public.cloudinary.cloud_name;
