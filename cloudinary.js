@@ -5,6 +5,7 @@ if (Meteor.isClient) {
 
 		Cloudinary.upload(files, {
 			folder: Meteor.settings.public.cloudinary.folder,
+      fields: {}
 		}, function (error, result) {
 			if (error) {
 				failure(new Meteor.Error('rwatts:orionjs-cloudinary', i18n('filesystem.messages.errorUploading')));

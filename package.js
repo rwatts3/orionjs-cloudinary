@@ -14,14 +14,14 @@ Package.onUse(function(api) {
 		'orionjs:core@1.6.0',
 		'orionjs:filesystem@1.6.0',
 		'orionjs:config@1.6.0',
-		'lepozepo:cloudinary@4.1.3',
+		'lepozepo:cloudinary@4.2.2',
 		'ecmascript'
 	]);
-	
+
 	api.addFiles([
 		'cloudinary.js'
 	]);
-	
+
 	api.mainModule("cloudinary.js", "client");
 	api.export(['orion', 'Cloudinary']);
 });
