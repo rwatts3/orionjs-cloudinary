@@ -5,6 +5,7 @@ if (Meteor.isClient) {
 
 		Cloudinary.upload(files, {
 			folder: Meteor.settings.public.cloudinary.folder,
+      fields: {}
 		}, function (error, result) {
 			if (error) {
 				failure(new Meteor.Error('rwatts:orionjs-cloudinary', i18n('filesystem.messages.errorUploading')));
@@ -13,17 +14,17 @@ if (Meteor.isClient) {
 			}
 			Cloudinary.collection.remove({});
 		});
-		
+
 		Tracker.autorun(function () {
 			var file = Cloudinary.collection.findOne();
 			if (file) {
-				progress(file.percent_uploaded);
+				progress(file.percent_uploaded || 0);
 			}
 		});
 	};
 
 	orion.filesystem.providerRemove = function (file, success, failure) {
-		Cloudinary.delete(file.meta.publicId, function (error, result) {
+		Cloudinary.delete(file.meta.public_id, function (error, result) {
 			if (error) {
 				failure(new Meteor.Error('rwatts:orionjs-cloudinary', i18n('filesystem.messages.errorRemoving')));
 			} else {
@@ -34,12 +35,15 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-	Cloudinary.config({
-		cloud_name: Meteor.settings.private.cloudinary.cloud_name,
-		api_key: Meteor.settings.private.cloudinary.api_key,
-		api_secret: Meteor.settings.private.cloudinary.api_secret
+	Meteor.startup(function() {
+		if (Meteor.settings.private && Meteor.settings.private.cloudinary) {
+			Cloudinary.config({
+				cloud_name: Meteor.settings.private.cloudinary.cloud_name,
+				api_key: Meteor.settings.private.cloudinary.api_key,
+				api_secret: Meteor.settings.private.cloudinary.api_secret
+			});
+		}
 	});
-
 }
 if (Meteor.isClient) {
 	let cloud_name = Meteor.settings.public.cloudinary.cloud_name;
