@@ -18,7 +18,7 @@ if (Meteor.isClient) {
 		Tracker.autorun(function () {
 			var file = Cloudinary.collection.findOne();
 			if (file) {
-				progress(file.percent_uploaded);
+				progress(file.percent_uploaded || 0);
 			}
 		});
 	};
