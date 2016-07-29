@@ -18,13 +18,13 @@ if (Meteor.isClient) {
 		Tracker.autorun(function () {
 			var file = Cloudinary.collection.findOne();
 			if (file) {
-				progress(file.percent_uploaded);
+				progress(file.percent_uploaded || 0);
 			}
 		});
 	};
 
 	orion.filesystem.providerRemove = function (file, success, failure) {
-		Cloudinary.delete(file.meta.publicId, function (error, result) {
+		Cloudinary.delete(file.meta.public_id, function (error, result) {
 			if (error) {
 				failure(new Meteor.Error('rwatts:orionjs-cloudinary', i18n('filesystem.messages.errorRemoving')));
 			} else {
